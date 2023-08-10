@@ -1,0 +1,95 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/books": {
+      "get": {
+        "summary": "Returns books",
+        "tags": [
+          "Books"
+        ],
+        "security": [
+          {
+            "apikey": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "query",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "query": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result"
+          }
+        }
+      }
+    },
+    "/api/v1/user_bookings": {
+      "post": {
+        "summary": "Create UserBooking",
+        "tags": [
+          "UserBooking"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "UserBooking created"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "integer"
+                  },
+                  "book_id": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/",
+      "variables": {
+        "defaultHost": {
+          "default": "http://localhost:3000/"
+        }
+      }
+    }
+  ]
+}
